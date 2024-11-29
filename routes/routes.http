@@ -1,0 +1,81 @@
+# CRIAR O VIDEO
+
+POST http://localhost:3333/videos
+Content-Type: application/json
+
+{
+    "title": "Video node",
+    "description": "Esse é o primeiro video",
+    "duration": 100
+}
+
+### Explicação:
+- **Método**: POST
+- **Endpoint**: `/videos`
+- **Descrição**: Cria um novo vídeo no banco de dados.
+- **Parâmetros no corpo da requisição**:
+  - `title`: O título do vídeo.
+  - `description`: A descrição do vídeo.
+  - `duration`: A duração do vídeo em minutos.
+- **Resposta esperada**: Código HTTP 201 (Criado) se a operação for bem-sucedida.
+- **Exemplo de uso**: Usado para adicionar novos vídeos ao banco de dados.
+
+
+### 
+# LISTAR OS VIDEOS
+GET http://localhost:3333/videos
+
+### Explicação:
+- **Método**: GET
+- **Endpoint**: `/videos`
+- **Descrição**: Lista todos os vídeos do banco de dados.
+- **Resposta esperada**: Uma lista de vídeos com os detalhes, incluindo título, descrição e duração.
+- **Exemplo de uso**: Usado para consultar todos os vídeos existentes.
+
+### 
+GET http://localhost:3333/videos?search=node
+
+### Explicação:
+- **Método**: GET
+- **Endpoint**: `/videos?search=node`
+- **Descrição**: Lista vídeos que correspondem ao termo de pesquisa fornecido no parâmetro `search`.
+- **Parâmetros na URL**:
+  - `search`: Termo de busca (exemplo: "node"). O servidor retorna vídeos cujo título contenha esse termo.
+- **Resposta esperada**: Lista de vídeos filtrada pelo termo de pesquisa fornecido.
+
+### 
+# ALTERAR UM VIDEO
+PUT http://localhost:3333/videos/c607d533-35d2-4545-bd7c-45b0826ac47f
+Content-Type: application/json
+
+{
+    "title": "Video 01",
+    "description": "Esse é o segundo video",
+    "duration": 100
+}
+
+### Explicação:
+- **Método**: PUT
+- **Endpoint**: `/videos/{id}`
+- **Descrição**: Altera os dados de um vídeo específico. A URL inclui o ID do vídeo a ser alterado.
+- **Parâmetros na URL**:
+  - `id`: O ID único do vídeo a ser alterado (exemplo: `c607d533-35d2-4545-bd7c-45b0826ac47f`).
+- **Parâmetros no corpo da requisição**:
+  - `title`: Novo título do vídeo.
+  - `description`: Nova descrição do vídeo.
+  - `duration`: Nova duração do vídeo em minutos.
+- **Resposta esperada**: Código HTTP 204 (Sem conteúdo) se a operação for bem-sucedida.
+- **Exemplo de uso**: Usado para atualizar os dados de um vídeo existente.
+
+### 
+# DELETAR UM VIDEO
+DELETE http://localhost:3333/videos/c607d533-35d2-4545-bd7c-45b0826ac47f
+
+### Explicação:
+- **Método**: DELETE
+- **Endpoint**: `/videos/{id}`
+- **Descrição**: Deleta um vídeo específico com base no seu ID.
+- **Parâmetros na URL**:
+  - `id`: O ID único do vídeo a ser deletado (exemplo: `c607d533-35d2-4545-bd7c-45b0826ac47f`).
+- **Resposta esperada**: Código HTTP 204 (Sem conteúdo) se a operação for bem-sucedida.
+- **Exemplo de uso**: Usado para remover um vídeo do banco de dados.
